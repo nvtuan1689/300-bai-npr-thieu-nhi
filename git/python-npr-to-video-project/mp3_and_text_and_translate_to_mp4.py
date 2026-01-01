@@ -5,6 +5,7 @@ Tác giả: Script tự động
 Ngày tạo: 2026-01-02
 """
 
+import json
 from pathlib import Path
 from moviepy.editor import *
 from PIL import Image, ImageDraw, ImageFont
@@ -112,10 +113,111 @@ def create_text_frame(text_en, text_vi, width=1920, height=1080, highlight_en=Fa
     return np.array(img)
 
 
+def load_timestamps(timestamps_path):
+    """Load timestamps từ file JSON (nếu có)"""
+    if Path(timestamps_path).exists():
+        with open(timestamps_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return None
+
+
+def create_video_with_timestamps(mp3_path, text_en, text_vi, timestamps, output_folder, show_progress=True):
+    """Tạo video MP4 với timestamps chính xác từ Whisper"""
+    if show_progress:
+        print("\n🎬 Đang tạo video với timestamps...")
+    
+    # Load audio
+    audio_clip = AudioFileClip(mp3_path)
+    duration = audio_clip.duration
+    
+    if show_progress:
+        print(f"  Audio duration: {duration:.1f} seconds")
+        print(f"  Số segments: {len(timestamps)}")
+    
+    # Dịch từng segment tiếng Việt (split theo timestamps)
+    from text_to_vietnamese import translate_text
+    
+    segments_vi = []
+    for seg in timestamps:
+        # Dịch từng segment riêng để match chính xác
+        vi_text = translate_text(seg['text'], show_progress=False)
+        segments_vi.append(vi_text)
+    
+    if show_progress:
+        print(f"✅ Đã dịch {len(segments_vi)} segments")
+    
+    # Tạo video clips theo timestamps
+    video_clips = []
+    
+    for i, (seg, vi_text) in enumerate(zip(timestamps, segments_vi)):
+        if show_progress:
+            print(f"\r  Đang tạo frame {i+1}/{len(timestamps)}...", end='')
+        
+        # Tạo frame với text của segment này
+        frame = create_text_frame(seg['text'], vi_text, highlight_en=True, highlight_vi=True)
+        
+        # Duration = end - start
+        seg_duration = seg['end'] - seg['start']
+        
+        # Tạo clip từ frame
+        clip = ImageClip(frame).set_duration(seg_duration).set_start(seg['start'])
+        video_clips.append(clip)
+    
+    if show_progress:
+        print()
+    
+    # Ghép các clips
+    if show_progress:
+        print("  Đang ghép video...")
+    video = CompositeVideoClip(video_clips, size=(1920, 1080))
+    
+    # Set duration và audio
+    video = video.set_duration(duration).set_audio(audio_clip)
+    
+    # Output path
+    output_path = Path(output_folder) / "output_video.mp4"
+    
+    # Render video
+    if show_progress:
+        print(f"  Đang render video: {output_path}")
+    video.write_videofile(
+        str(output_path),
+        fps=24,
+        codec='libx264',
+        audio_codec='aac',
+        temp_audiofile='temp-audio.m4a',
+        remove_temp=True,
+        verbose=False,
+        logger=None
+    )
+    
+    # Cleanup
+    audio_clip.close()
+    video.close()
+    
+    if show_progress:
+        print(f"✅ Đã tạo video: {output_path}")
+    
+    return output_path
+
+
 def create_video(mp3_path, text_en, text_vi, output_folder, show_progress=True):
-    """Tạo video MP4 từ audio và text"""
+    """Tạo video MP4 từ audio và text (fallback nếu không có timestamps)"""
     if show_progress:
         print("\n🎬 Đang tạo video...")
+    
+    # Check xem có timestamps không
+    timestamps_path = Path(mp3_path).parent / "timestamps.json"
+    if timestamps_path.exists():
+        if show_progress:
+            print(f"✅ Tìm thấy timestamps.json - sử dụng sync chính xác!")
+        timestamps = load_timestamps(timestamps_path)
+        return create_video_with_timestamps(mp3_path, text_en, text_vi, timestamps, output_folder, show_progress)
+    
+    # Fallback: chia đều thời gian
+    if show_progress:
+        print("⚠️ Không tìm thấy timestamps.json - sử dụng chia đều thời gian")
+        print("  Để sync chính xác hơn, chạy: python mp3_to_transcript_with_timestamps.py <mp3_path>")
     
     # Load audio
     audio_clip = AudioFileClip(mp3_path)
@@ -124,9 +226,9 @@ def create_video(mp3_path, text_en, text_vi, output_folder, show_progress=True):
     if show_progress:
         print(f"  Audio duration: {duration:.1f} seconds")
     
-    # Chia text thành chunks
-    chunks_en = split_text_into_chunks(text_en, chunk_size=400)
-    chunks_vi = split_text_into_chunks(text_vi, chunk_size=400)
+    # Chia text thành chunks (giảm chunk_size để sync tốt hơn với audio)
+    chunks_en = split_text_into_chunks(text_en, chunk_size=200)
+    chunks_vi = split_text_into_chunks(text_vi, chunk_size=200)
     
     # Đảm bảo 2 list có cùng độ dài
     max_chunks = max(len(chunks_en), len(chunks_vi))

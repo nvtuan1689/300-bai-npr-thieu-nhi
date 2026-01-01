@@ -310,13 +310,15 @@ def save_transcript(title, transcript, folder_path):
     if copyright_index != -1:
         transcript = transcript[:copyright_index].strip()
     
-    # Format lại: thêm xuống dòng sau mỗi speaker
-    # Tìm các pattern như "CHANG:" hoặc "HAWKINS:" và thêm \n\n trước đó
-    speakers = ['CHANG:', 'HAWKINS:', 'DAVIS:', 'RHODES:', 'HOST:', 'BYLINE:', 'TRUMP:']
-    for speaker in speakers:
-        transcript = transcript.replace(speaker, f'\n\n{speaker} ')
+    # Format lại: xuống dòng trước mỗi speaker (CHỮ HOA + : + khoảng cách)
+    # Pattern: tìm các chữ cái in hoa + dấu: + space (ví dụ: "TREISMAN: ")
+    # Thêm \n\n trước speaker name nếu không có newline
+    transcript = re.sub(r'([a-z.,!?;)\]])([A-Z]{2,}:)\s', r'\1\n\n\2 ', transcript)
     
-    # Loại bỏ nhiều xuống dòng liên tiếp
+    # Loại bỏ tất cả các dòng trống liên tiếp (chỉ giữ 1 dòng trống)
+    transcript = re.sub(r'\n\s*\n', '\n\n', transcript)
+    
+    # Loại bỏ 2+ dòng trống liên tiếp
     transcript = re.sub(r'\n{3,}', '\n\n', transcript)
     transcript = transcript.strip()
     
