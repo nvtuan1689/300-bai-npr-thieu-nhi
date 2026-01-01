@@ -63,16 +63,25 @@ def wrap_text(text, font, max_width, draw):
     return '\n'.join(lines)
 
 
-def create_text_frame(text_en, text_vi, width=1920, height=1080, highlight_en=False, highlight_vi=False):
-    """Tạo frame với text song ngữ"""
+def create_scrolling_text_frame(full_text_en, full_text_vi, highlight_start, highlight_end, 
+                                width=1920, height=1080, font_size_en=32, font_size_vi=28):
+    """
+    Tạo frame với toàn bộ text và highlight phần đang đọc
+    
+    Args:
+        full_text_en: Toàn bộ text tiếng Anh
+        full_text_vi: Toàn bộ text tiếng Việt
+        highlight_start: Vị trí bắt đầu highlight (index)
+        highlight_end: Vị trí kết thúc highlight (index)
+    """
     # Tạo background đen
     img = Image.new('RGB', (width, height), color=(0, 0, 0))
     draw = ImageDraw.Draw(img)
     
     # Fonts
     try:
-        font_en = ImageFont.truetype("arial.ttf", 32)
-        font_vi = ImageFont.truetype("arial.ttf", 28)
+        font_en = ImageFont.truetype("arial.ttf", font_size_en)
+        font_vi = ImageFont.truetype("arial.ttf", font_size_vi)
         font_header = ImageFont.truetype("arial.ttf", 28)
     except:
         font_en = ImageFont.load_default()
@@ -84,29 +93,86 @@ def create_text_frame(text_en, text_vi, width=1920, height=1080, highlight_en=Fa
     right_x = width // 2 + 50
     y_start = 100
     max_width = width // 2 - 100
+    line_spacing = 10
     
-    # Background cho highlighted text
-    if highlight_en:
-        draw.rectangle([left_x - 10, y_start - 10, width // 2 - 50, height - 50], 
-                      fill=(30, 30, 30), outline=(255, 255, 0), width=3)
+    # Wrap toàn bộ text
+    wrapped_en = wrap_text(full_text_en, font_en, max_width, draw)
+    wrapped_vi = wrap_text(full_text_vi, font_vi, max_width, draw)
     
-    if highlight_vi:
-        draw.rectangle([right_x - 10, y_start - 10, width - 50, height - 50], 
-                      fill=(30, 30, 30), outline=(255, 255, 0), width=3)
+    # Tính toán vị trí của highlight trong wrapped text
+    # Chia thành các dòng
+    lines_en = wrapped_en.split('\n')
+    lines_vi = wrapped_vi.split('\n')
     
-    # Wrap text để vừa trong khung
-    wrapped_text_en = wrap_text(text_en, font_en, max_width, draw)
-    wrapped_text_vi = wrap_text(text_vi, font_vi, max_width, draw)
+    # Tìm dòng chứa highlight (dựa vào số ký tự)
+    char_count = 0
+    highlight_line_start = 0
+    highlight_line_end = len(lines_en) - 1
+    
+    for i, line in enumerate(lines_en):
+        line_char_count = len(line)
+        if char_count <= highlight_start < char_count + line_char_count:
+            highlight_line_start = i
+        if char_count <= highlight_end < char_count + line_char_count:
+            highlight_line_end = i
+            break
+        char_count += line_char_count + 1  # +1 for newline
+    
+    # Tính scroll offset để giữ highlight ở giữa màn hình
+    available_height = height - y_start - 100
+    line_height = font_size_en + line_spacing
+    visible_lines = int(available_height / line_height)
+    
+    # Scroll để highlight_line ở giữa màn hình (hoặc gần đầu nếu chưa đủ text)
+    target_line = highlight_line_start
+    scroll_offset = max(0, target_line - visible_lines // 3)  # Giữ highlight ở 1/3 màn hình
     
     # Vẽ text English (bên trái)
-    color_en = (255, 255, 0) if highlight_en else (255, 255, 255)
-    draw.multiline_text((left_x, y_start), wrapped_text_en, font=font_en, fill=color_en, spacing=5)
+    y_pos = y_start
+    for i, line in enumerate(lines_en):
+        if i < scroll_offset:
+            continue  # Skip lines above visible area
+        
+        line_y = y_pos + (i - scroll_offset) * line_height
+        if line_y > height - 100:
+            break  # Stop if below visible area
+        
+        # Check if this line should be highlighted
+        if highlight_line_start <= i <= highlight_line_end:
+            # Highlight line
+            color = (255, 50, 50)  # Đỏ
+            # Draw background for highlight
+            bbox = draw.textbbox((left_x, line_y), line, font=font_en)
+            draw.rectangle([bbox[0]-5, bbox[1]-3, bbox[2]+5, bbox[3]+3], 
+                          fill=(50, 20, 20), outline=(255, 50, 50), width=2)
+        else:
+            color = (200, 200, 200)  # Xám nhạt
+        
+        draw.text((left_x, line_y), line, font=font_en, fill=color)
     
-    # Vẽ text Vietnamese (bên phải)
-    color_vi = (255, 255, 0) if highlight_vi else (200, 200, 255)
-    draw.multiline_text((right_x, y_start), wrapped_text_vi, font=font_vi, fill=color_vi, spacing=5)
+    # Vẽ text Vietnamese (bên phải) - sync scroll với English
+    y_pos = y_start
+    for i, line in enumerate(lines_vi):
+        if i < scroll_offset:
+            continue
+        
+        line_y = y_pos + (i - scroll_offset) * line_height
+        if line_y > height - 100:
+            break
+        
+        # Highlight cùng dòng với English
+        if highlight_line_start <= i <= highlight_line_end:
+            color = (255, 100, 100)  # Đỏ nhạt hơn
+            bbox = draw.textbbox((right_x, line_y), line, font=font_vi)
+            draw.rectangle([bbox[0]-5, bbox[1]-3, bbox[2]+5, bbox[3]+3], 
+                          fill=(50, 20, 20), outline=(255, 100, 100), width=2)
+        else:
+            color = (180, 180, 200)  # Xanh xám nhạt
+        
+        draw.text((right_x, line_y), line, font=font_vi, fill=color)
     
     # Header
+    draw.rectangle([0, 0, width, 80], fill=(20, 20, 20))
     draw.text((left_x, 30), "English Transcript", font=font_header, fill=(150, 150, 150))
     draw.text((right_x, 30), "Bản dịch tiếng Việt", font=font_header, fill=(150, 150, 150))
     
@@ -122,9 +188,9 @@ def load_timestamps(timestamps_path):
 
 
 def create_video_with_timestamps(mp3_path, text_en, text_vi, timestamps, output_folder, show_progress=True):
-    """Tạo video MP4 với timestamps chính xác từ Whisper"""
+    """Tạo video MP4 với timestamps chính xác từ Whisper - Karaoke style"""
     if show_progress:
-        print("\n🎬 Đang tạo video với timestamps...")
+        print("\n🎬 Đang tạo video với timestamps (karaoke style)...")
     
     # Load audio
     audio_clip = AudioFileClip(mp3_path)
@@ -134,33 +200,54 @@ def create_video_with_timestamps(mp3_path, text_en, text_vi, timestamps, output_
         print(f"  Audio duration: {duration:.1f} seconds")
         print(f"  Số segments: {len(timestamps)}")
     
-    # Dịch từng segment tiếng Việt (split theo timestamps)
+    # Dịch toàn bộ text một lần
     from text_to_vietnamese import translate_text
+    if show_progress:
+        print("  Đang dịch toàn bộ text...")
+    text_vi_full = translate_text(text_en, show_progress=False)
     
-    segments_vi = []
+    # Tạo mapping từ timestamps sang character positions
+    char_positions = []
+    current_pos = 0
+    
     for seg in timestamps:
-        # Dịch từng segment riêng để match chính xác
-        vi_text = translate_text(seg['text'], show_progress=False)
-        segments_vi.append(vi_text)
+        seg_text = seg['text'].strip()
+        # Tìm vị trí của segment trong full text
+        pos = text_en.find(seg_text, current_pos)
+        if pos == -1:
+            pos = current_pos  # Fallback
+        
+        char_positions.append({
+            'start_time': seg['start'],
+            'end_time': seg['end'],
+            'char_start': pos,
+            'char_end': pos + len(seg_text)
+        })
+        current_pos = pos + len(seg_text)
     
     if show_progress:
-        print(f"✅ Đã dịch {len(segments_vi)} segments")
+        print(f"  Đang tạo {len(char_positions)} frames với karaoke effect...")
     
-    # Tạo video clips theo timestamps
+    # Tạo video clips - mỗi segment một frame
     video_clips = []
     
-    for i, (seg, vi_text) in enumerate(zip(timestamps, segments_vi)):
+    for i, pos_info in enumerate(char_positions):
         if show_progress:
-            print(f"\r  Đang tạo frame {i+1}/{len(timestamps)}...", end='')
+            print(f"\r  Frame {i+1}/{len(char_positions)}...", end='')
         
-        # Tạo frame với text của segment này
-        frame = create_text_frame(seg['text'], vi_text, highlight_en=True, highlight_vi=True)
+        # Tạo frame với full text và highlight segment hiện tại
+        frame = create_scrolling_text_frame(
+            text_en, 
+            text_vi_full,
+            pos_info['char_start'],
+            pos_info['char_end']
+        )
         
         # Duration = end - start
-        seg_duration = seg['end'] - seg['start']
+        seg_duration = pos_info['end_time'] - pos_info['start_time']
         
         # Tạo clip từ frame
-        clip = ImageClip(frame).set_duration(seg_duration).set_start(seg['start'])
+        clip = ImageClip(frame).set_duration(seg_duration).set_start(pos_info['start_time'])
         video_clips.append(clip)
     
     if show_progress:
