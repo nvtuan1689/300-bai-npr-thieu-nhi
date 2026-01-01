@@ -1,0 +1,33 @@
+tạo 1 python script npr_get_text_and_mp3.py để: 
+    1. user nhập input ngay tại commandline hoặc hỏi user về các input cần thiết
+    2. các input gồm:
+        - url của 1 trang web, ví dụ https://www.npr.org/transcripts/nx-s1-5655252
+    3. sau khi user nhập input xong:
+        - tạo mới 1 folder theo dạng ngày tháng năm giờ phút ví dụ 2025_12_31__22_15
+        - lưu trang web được cung cấp trong url input vào folder đó
+        - cấu trúc trang web hãy tham khảo file example_input/Add health insurance costs to problems facing American farmers _ Shots - Health News _ NPR.html
+        - hãy lấy ra title và nội dung transcript
+            - trong ví dụ trên title sẽ là "Farmers are about to pay a lot more for health insurance"
+            - nội dung sẽ là "AILSA CHANG, HOST: " ... cho tới "HAWKINS: Thank you, Ailsa"
+            - lưu title và nội dung vào 1 file txt khác, không bao gồm mã html
+        - Khi user bấm vào nút play ở class "audio-module-listen-icon icn-play" trong web browser thì có audio phát ra, hãy lưu audio đó lại thành mp3
+                
+    4. sau khi chạy xong:
+        - Lưu lại các input của user vào chính script npr_get_text_and_mp3.py dùng để gợi ý cho user input khi user chạy script lần tiếp theo
+        
+
+tạo 1 python script mp3_and_text_to_mp4.py để: 
+    1. user nhập input ngay tại commandline hoặc hỏi user về các input cần thiết
+    2. các input gồm:
+        - path tới file mp3
+        - path tới file txt
+    3. sau khi user nhập input xong:
+        - tạo bản dịch txt thành tiếng việt txt_viet
+        - dùng mp3, txt và txt_viet tạo thành mp4, trong đó mp3 là giọng đọc của transcript chứa trong txt
+        - trong mp4, giọng đọc sẽ phát tiếng, txt bên phía trái video, txt_viet phía phải video
+        - chữ trên màn hình sẽ hiển thị đoạn txt đang đọc
+        - mp4 sẽ lưu trong 1 folder cùng với mp3
+                
+    4. sau khi chạy xong:
+        - Lưu lại các input của user vào chính script py dùng để gợi ý cho user input khi user chạy script lần tiếp theo
+        

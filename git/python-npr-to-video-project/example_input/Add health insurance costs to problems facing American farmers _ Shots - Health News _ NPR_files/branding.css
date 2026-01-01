@@ -1,0 +1,36 @@
+/* title highlight color */
+.branding__title--custom-text > b {
+	color: #193864;
+}
+
+@media screen and (min-width: 768px) {
+	.branding > a,
+	.branding > .branding__outer {
+		padding-left: 74px;
+	}
+
+	.branding__image-icon {
+		position: absolute;
+		top: 15px;
+		left: 30px;
+	}
+
+	.story-layout #contentfooter .branding > a,
+	.story-layout #contentfooter .branding > .branding__outer {
+		padding-top: 10px;
+		padding-left: 75px;
+	}
+
+	.agg #contentfooter .branding > a,
+	.agg #contentfooter .branding > .branding__outer {
+		padding-top: 16px;
+		padding-left: 62px;
+	}
+
+	.agg #contentfooter .branding .branding__image-icon {
+		top: 26px;
+		left: 42px;
+		max-width: 50px;
+		height: auto;
+	}
+}
