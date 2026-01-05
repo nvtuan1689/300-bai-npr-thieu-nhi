@@ -331,26 +331,41 @@ def save_transcript(title, transcript, folder_path):
     return txt_file
 
 
+def process_npr_article(url):
+    """Xử lý bài viết NPR: tải, trích xuất và lưu transcript + audio
+    
+    Args:
+        url (str): URL của bài viết NPR
+        
+    Returns:
+        tuple: (folder_path, title, transcript, audio_file_path)
+    """
+    # Tạo folder output
+    folder_path = create_output_folder()
+    
+    # Download trang web
+    html_content = download_webpage(url, folder_path)
+    
+    # Trích xuất title và transcript
+    title, transcript = extract_title_and_transcript(html_content)
+    
+    # Lưu transcript
+    transcript_file = save_transcript(title, transcript, folder_path)
+    
+    # Download audio
+    audio_file = download_audio(html_content, folder_path)
+    
+    return folder_path, title, transcript, audio_file
+
+
 def main():
     """Main function"""
     try:
         # Lấy input
         url = get_user_input()
         
-        # Tạo folder output
-        folder_path = create_output_folder()
-        
-        # Download trang web
-        html_content = download_webpage(url, folder_path)
-        
-        # Trích xuất title và transcript
-        title, transcript = extract_title_and_transcript(html_content)
-        
-        # Lưu transcript
-        save_transcript(title, transcript, folder_path)
-        
-        # Download audio
-        download_audio(html_content, folder_path)
+        # Xử lý bài viết
+        folder_path, title, transcript, audio_file = process_npr_article(url)
         
         print("\n" + "=" * 70)
         print("✅ HOÀN THÀNH!")

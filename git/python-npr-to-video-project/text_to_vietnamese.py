@@ -23,25 +23,20 @@ def translate_text(text, show_progress=True):
         
         translator = GoogleTranslator(source='en', target='vi')
         
-        current_chunk = ""
-        for para in paragraphs:
-            if len(current_chunk) + len(para) < max_length:
-                current_chunk += para + '\n\n'
-            else:
-                if current_chunk:
-                    if show_progress:
-                        print(f"  Đang dịch đoạn {len(translated_paragraphs) + 1}...")
-                    translated = translator.translate(current_chunk.strip())
-                    translated_paragraphs.append(translated)
-                current_chunk = para + '\n\n'
-        
-        # Dịch đoạn cuối
-        if current_chunk:
+        # Dịch từng paragraph riêng biệt để giữ nguyên format xuống dòng
+        for i, para in enumerate(paragraphs):
+            if not para.strip():  # Bỏ qua paragraph rỗng
+                translated_paragraphs.append("")
+                continue
+                
             if show_progress:
-                print(f"  Đang dịch đoạn {len(translated_paragraphs) + 1}...")
-            translated = translator.translate(current_chunk.strip())
+                print(f"  Đang dịch đoạn {i + 1}/{len(paragraphs)}...")
+            
+            # Dịch từng paragraph một để giữ format
+            translated = translator.translate(para.strip())
             translated_paragraphs.append(translated)
         
+        # Join lại với \n\n để giữ nguyên structure
         vietnamese_text = '\n\n'.join(translated_paragraphs)
         
         if show_progress:
