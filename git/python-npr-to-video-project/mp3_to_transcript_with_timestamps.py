@@ -50,10 +50,10 @@ def transcribe_audio_with_timestamps(mp3_path, model_size="base", language="en")
         print(f"  ⏳ Quá trình này có thể mất vài phút...")
         
         result = model.transcribe(
-            str(mp3_path),  # Convert to string to ensure compatibility
+            str(mp3_path),
             language=language,
             verbose=False,
-            word_timestamps=False  # Tắt word_timestamps để tránh lỗi
+            word_timestamps=False
         )
         
         # Extract segments
@@ -77,17 +77,11 @@ def transcribe_audio_with_timestamps(mp3_path, model_size="base", language="en")
         print(f"❌ Lỗi: Không tìm thấy file hoặc thiếu ffmpeg!")
         print(f"  Chi tiết: {e}")
         print("\n💡 Giải pháp:")
-        print("  1. Kiểm tra file MP3 có tồn tại: {mp3_path}")
+        print(f"  1. Kiểm tra file MP3 có tồn tại: {mp3_path}")
         print("  2. Cài đặt ffmpeg:")
         print("     - Download: https://ffmpeg.org/download.html")
         print("     - Hoặc: https://github.com/BtbN/FFmpeg-Builds/releases")
         print("     - Thêm ffmpeg.exe vào PATH hoặc folder hiện tại")
-        sys.exit(1)
-    except Exception as e:
-        print(f"❌ Lỗi khi transcribe: {e}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
         sys.exit(1)
     except Exception as e:
         print(f"❌ Lỗi khi transcribe: {e}")

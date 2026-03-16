@@ -1,0 +1,269 @@
+# AI Matching with paraphrase-multilingual-MiniLM-L12-v2
+# Threshold: EN=35.0%, VI=24.5%
+# Generated: transcript_with_en+vi_with_timestamps_AI.txt
+#============================================================
+
+1
+00:00:00,000 --> 00:00:04,520
+[AUTO] This is All Things Considered from NPR News, I'm Lauren Fraer.
+[EN] (no match)
+[VI] LAUREN FRAYER, NGƯỜI CHỦ:Đây là TẤT CẢ NHỮNG ĐIỀU ĐƯỢC XEM XÉT từ NPR
+
+2
+00:00:04,520 --> 00:00:09,000
+[AUTO] President Trump has made clear that the U.S. operation to capture Venezuelan President
+[EN] TITLE: Trump wants U.S. oil companies in Venezuela. Here's what to know ======================================================================
+[VI] News. Tôi là Lauren Frayer. Tổng thống Trump đã nói rõ rằng hoạt động của Mỹ
+
+3
+00:00:09,000 --> 00:00:15,400
+[AUTO] Nicolas Maduro is, at least in part, about controlling Venezuela's oil. Trump said
+[EN] LAUREN FRAYER, HOST:This is ALL THINGS CONSIDERED from NPR News. I'm Lauren Frayer.
+[VI] nhằm bắt giữ Tổng thống Venezuela Nicolas Maduro ít nhất một phần là nhằm kiểm soát
+
+4
+00:00:15,400 --> 00:00:20,640
+[AUTO] yesterday at a press conference that U.S. oil companies will spend billions of dollars
+[EN] President Trump has made clear that the U.S. operation to capture Venezuelan President Nicolas
+[VI] dầu mỏ của Venezuela. Trump hôm qua cho biết tại một cuộc họp báo rằng các công ty
+
+5
+00:00:20,640 --> 00:00:26,719
+[AUTO] to support the country's oil infrastructure. NPR's Julia Simon joins us now, and Julia,
+[EN] (no match)
+[VI] dầu mỏ của Mỹ sẽ chi hàng tỷ đô la để hỗ trợ cơ sở hạ tầng dầu
+
+6
+00:00:26,719 --> 00:00:31,199
+[AUTO] give us a lay of the land. How big of a deal is Venezuela's oil?
+[EN] Maduro is, at least in part, about controlling Venezuela's oil. Trump said yesterday at a
+[VI] mỏ của đất nước. Julia Simon của NPR tham gia cùng chúng tôi ngay bây giờ. Và Julia, hãy
+
+7
+00:00:31,199 --> 00:00:37,019
+[AUTO] Well Venezuela has one of the biggest oil resources in the world, but their oil output
+[EN] press conference that U.S. oil companies will spend billions of dollars to support the country's oil
+[VI] cho chúng tôi một mảnh đất. Dầu của Venezuela có tầm quan trọng như thế nào? JULIA SIMON, BYLINE: Venezuela
+
+8
+00:00:37,019 --> 00:00:43,320
+[AUTO] has fallen a lot in recent decades. Venezuela once produced 3 million barrels a day, now
+[EN] infrastructure. NPR's Julia Simon joins us now. And Julia, give us a lay of the land.
+[VI] có một trong những nguồn tài nguyên dầu mỏ lớn nhất thế giới, nhưng sản lượng dầu của họ đã
+
+9
+00:00:43,320 --> 00:00:48,759
+[AUTO] it's more like 1 million barrels. In the past, much of Venezuela's oil went to refineries
+[EN] How big of a deal is Venezuela's oil?JULIA SIMON, BYLINE: Well, Venezuela has one of the
+[VI] giảm rất nhiều trong những thập kỷ gần đây. Venezuela từng sản xuất 3 triệu thùng mỗi ngày. Bây giờ,
+
+10
+00:00:48,759 --> 00:00:54,439
+[AUTO] in the U.S., now much of it goes to China. And Lauren, it's important to remember that
+[EN] (no match)
+[VI] nó giống như 1 triệu thùng. Trước đây, phần lớn dầu của Venezuela được đưa đến các nhà máy lọc dầu ở
+
+11
+00:00:54,439 --> 00:01:00,759
+[AUTO] all oil is bad for global warming. Burning it releases planet-heating carbon dioxide.
+[EN] biggest oil resources in the world, but their oil output has fallen a
+[VI] Mỹ. Hiện nay, phần lớn dầu được chuyển đến Trung Quốc. Và Lauren, điều quan trọng
+
+12
+00:01:00,759 --> 00:01:06,480
+[AUTO] But Venezuela's oil, experts say, is among the worst for global warming. It requires
+[EN] lot in recent decades. Venezuela once produced 3 million barrels a day. Now, it's
+[VI] cần nhớ là tất cả dầu đều có hại cho sự nóng lên toàn cầu. Đốt cháy nó
+
+13
+00:01:06,480 --> 00:01:12,560
+[AUTO] a lot of energy to extract, and it releases a lot of methane, another powerful pollutant.
+[EN] (no match)
+[VI] sẽ giải phóng carbon dioxide làm nóng hành tinh. Tuy nhiên, các chuyên gia cho rằng dầu của Venezuela là
+
+14
+00:01:12,560 --> 00:01:18,239
+[AUTO] And President Trump has said that Venezuela has stolen U.S. oil investment. What is he
+[EN] more like 1 million barrels. In the past, much of Venezuela's oil went to refineries
+[VI] (no match)
+
+15
+00:01:18,239 --> 00:01:22,200
+[AUTO] referring to? Right. U.S. oil companies, they've been drilling
+[EN] (no match)
+[VI] (no match)
+
+16
+00:01:22,200 --> 00:01:28,159
+[AUTO] in Venezuela for more than a century. But around 2007, then President Hugo Chavez,
+[EN] (no match)
+[VI] (no match)
+
+17
+00:01:28,159 --> 00:01:33,000
+[AUTO] he really shook things up. Here's Francisco Menaldi, director of the Latin America Energy
+[EN] (no match)
+[VI] một trong những nguồn gây ra tình trạng nóng lên toàn cầu tồi tệ nhất. Nó đòi hỏi
+
+18
+00:01:33,000 --> 00:01:37,600
+[AUTO] Program at Rice University. So Chavez basically forcefully renegotiated
+[EN] (no match)
+[VI] (no match)
+
+19
+00:01:37,600 --> 00:01:43,920
+[AUTO] contracts. There were three major American companies, and two decided to leave and go
+[EN] (no match)
+[VI] (no match)
+
+20
+00:01:43,920 --> 00:01:48,280
+[AUTO] into international arbitration, and the other one decided to stay.
+[EN] (no match)
+[VI] (no match)
+
+21
+00:01:48,280 --> 00:01:54,120
+[AUTO] So Exxon Mobil and ConocoPhillips, they left and took the Venezuelan government to international
+[EN] (no match)
+[VI] rất nhiều năng lượng để chiết xuất và thải ra rất nhiều khí mê-tan, một chất gây ô
+
+22
+00:01:54,120 --> 00:02:03,359
+[AUTO] courts, which ordered that Venezuela pay ConocoPhillips over $10 billion and Exxon Mobil over $1 billion.
+[EN] (no match)
+[VI] nhiễm mạnh khác. FRAYER: Và Tổng thống Trump đã nói rằng Venezuela đã đánh cắp khoản đầu tư vào dầu
+
+23
+00:02:03,359 --> 00:02:08,319
+[AUTO] Venezuela's only paid a fraction of those sums. Meanwhile, the U.S. company that stayed
+[EN] (no match)
+[VI] mỏ của Hoa Kỳ. Anh ấy đang đề cập đến điều gì? SIMON: Đúng rồi. Các công ty
+
+24
+00:02:08,319 --> 00:02:12,520
+[AUTO] is Chevron. Trump has said that U.S. oil companies will
+[EN] in the U.S. Now much of it goes to China.
+[VI] dầu mỏ của Mỹ - họ đã khoan dầu ở Venezuela hơn một
+
+25
+00:02:12,520 --> 00:02:16,199
+[AUTO] come into Venezuela. How likely is that, though?
+[EN] (no match)
+[VI] thế kỷ. Nhưng vào khoảng năm 2007, Tổng thống lúc
+
+26
+00:02:16,280 --> 00:02:22,119
+[AUTO] Well, one positive thing for oil companies is that Venezuela is pretty well established.
+[EN] And Lauren, it's important to remember that all oil is bad for global warming.
+[VI] bấy giờ là Hugo Chavez, ông đã thực sự làm mọi việc thay đổi. Đây là Francisco Monaldi,
+
+27
+00:02:22,119 --> 00:02:27,060
+[AUTO] Oil companies have a fairly good idea of what they will find when they drill. Menaldi says
+[EN] (no match)
+[VI] (no match)
+
+28
+00:02:27,060 --> 00:02:32,019
+[AUTO] for companies owed billions by the Venezuelan government, returning to the country could
+[EN] (no match)
+[VI] giám đốc Chương trình Năng lượng Mỹ Latinh tại Đại học Rice. FRANCISCO MONALDI: Vì vậy,
+
+29
+00:02:32,019 --> 00:02:37,959
+[AUTO] be an opportunity to recoup some of that money. But look, Lauren, there's lots of reasons
+[EN] (no match)
+[VI] (no match)
+
+30
+00:02:37,959 --> 00:02:43,439
+[AUTO] oil companies would not want to come back. Yeah, I mean, I imagine some oil companies
+[EN] Burning it releases planet-heating carbon dioxide. But Venezuela's oil, experts say, is among the worst for
+[VI] về cơ bản, Chavez đã buộc phải đàm phán lại các hợp đồng. Có ba công ty lớn của Mỹ,
+
+31
+00:02:43,439 --> 00:02:47,000
+[AUTO] might feel bruised by their past experiences there.
+[EN] (no match)
+[VI] (no match)
+
+32
+00:02:47,000 --> 00:02:53,520
+[AUTO] 100%. And the global oil market, it faces an oversupply. The price of oil is pretty
+[EN] global warming. It requires a lot of energy to extract, and it releases a lot of
+[VI] hai công ty quyết định rời đi và gia nhập trọng tài quốc tế, còn công ty còn lại quyết
+
+33
+00:02:53,520 --> 00:02:59,199
+[AUTO] low. Long-term projections for oil demand are unclear as the world shifts to more electric
+[EN] methane, another powerful pollutant. FRAYER: And President Trump has said that Venezuela has stolen U.S.
+[VI] (no match)
+
+34
+00:02:59,199 --> 00:03:05,079
+[AUTO] vehicles. And it's still unclear who is in charge of Venezuela. No one's going to start
+[EN] oil investment. What is he referring to? SIMON: Right. U.S. oil companies - they've been drilling
+[VI] định ở lại. SIMON: Vậy nên ExxonMobil và ConocoPhillips - họ đã rời đi và kiện chính phủ Venezuela ra
+
+35
+00:03:05,079 --> 00:03:09,079
+[AUTO] investing until they're sure their oil contracts are valid.
+[EN] (no match)
+[VI] tòa án quốc tế, tòa án này đã yêu cầu Venezuela
+
+36
+00:03:09,480 --> 00:03:13,480
+[AUTO] Julia, are there even broader regional implications for oil?
+[EN] (no match)
+[VI] phải trả cho ConocoPhillips hơn 10 tỷ USD và ExxonMobil hơn
+
+37
+00:03:13,480 --> 00:03:20,040
+[AUTO] Yeah, people should also know that next door to Venezuela is Guyana. That's a country
+[EN] in Venezuela for more than a century. But around 2007, then-President Hugo Chavez, he really
+[VI] 1 tỷ USD. Venezuela chỉ trả một phần nhỏ trong số tiền đó. Trong khi đó, công ty Mỹ
+
+38
+00:03:20,040 --> 00:03:24,920
+[AUTO] which recently discovered massive amounts of oil. It's seen as one of the most attractive
+[EN] (no match)
+[VI] ở lại là Chevron. FRAYER: Trump đã nói rằng các công ty dầu mỏ của Mỹ sẽ đến Venezuela.
+
+39
+00:03:24,920 --> 00:03:30,460
+[AUTO] places in the world for oil. ExxonMobil is there. For years, Venezuela and Guyana have
+[EN] shook things up. Here's Francisco Monaldi, director of Latin American Energy Program at Rice University.FRANCISCO
+[VI] Tuy nhiên, khả năng đó là bao nhiêu? SIMON: Chà, một điều tích cực đối với các công ty
+
+40
+00:03:30,460 --> 00:03:35,840
+[AUTO] had a territorial conflict. It relates to oil rights. Last March, Venezuelan vessels
+[EN] MONALDI: So Chavez basically forcefully renegotiated contracts. There were three major American companies,
+[VI] dầu mỏ là Venezuela - nó có nền tảng khá tốt. Các công ty dầu mỏ
+
+41
+00:03:35,840 --> 00:03:40,960
+[AUTO] entered Guyana's territorial waters. And oil analysts tell NPR that, at least right
+[EN] and two decided to leave and go in to international arbitration, and the
+[VI] có một ý tưởng khá hay về những gì họ sẽ tìm thấy khi khoan dầu.
+
+42
+00:03:40,960 --> 00:03:46,319
+[AUTO] now, without Maduro, Guyana should feel more secure. By the way, ExxonMobil did not respond
+[EN] other one decided to stay. SIMON: So ExxonMobil and ConocoPhillips - they left and took
+[VI] Monaldi nói rằng đối với các công ty mà chính phủ Venezuela nợ hàng tỷ USD, việc trở về
+
+43
+00:03:46,319 --> 00:03:48,360
+[AUTO] to a request for comment.
+[EN] (no match)
+[VI] nước có thể là cơ hội
+
+44
+00:03:48,360 --> 00:03:50,879
+[AUTO] That's NPR's Julia Simon. Julia, thank you.
+[EN] (no match)
+[VI] (no match)
+
